@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// Script to control the main functions of the game 2.
@@ -37,11 +36,7 @@ public class GameManager2 : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject panelMenu = null;
     [SerializeField] GameObject panelPause = null;
-    [SerializeField] GameObject pauseFirstSelected = null;
     [SerializeField] GameObject panelHelp = null;
-    [SerializeField] GameObject helpFirstSelected = null;
-    [SerializeField] EventSystem eventSystem = null;
-
 
     private void Awake()
     {
@@ -155,7 +150,6 @@ public class GameManager2 : MonoBehaviour
         if (panelPause.activeSelf == false)
         {
             panelPause.SetActive(true);
-            eventSystem.SetSelectedGameObject(pauseFirstSelected);
             Time.timeScale = 0;
         }
         else if (panelPause.activeSelf == true)
@@ -173,7 +167,6 @@ public class GameManager2 : MonoBehaviour
         if (panelHelp.activeSelf == false)
         {
             panelHelp.SetActive(true);
-            eventSystem.SetSelectedGameObject(helpFirstSelected);
         }
         else
         {

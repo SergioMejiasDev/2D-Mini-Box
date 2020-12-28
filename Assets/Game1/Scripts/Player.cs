@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script that takes care of the player's movement.
+/// </summary>
 public class Player : MonoBehaviour
 {
     #region Variables
@@ -62,6 +65,10 @@ public class Player : MonoBehaviour
         Jump();
     }
 
+    /// <summary>
+    /// Function called to make the player move.
+    /// </summary>
+    /// <param name="h">Direction of movement of the player, positive if it is to the right and negative if it is to the left.</param>
     public void Movement(float h)
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime * h);
@@ -76,12 +83,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that activates character animations.
+    /// </summary>
+    /// <param name="h">Direction of movement of the player, positive if it is to the right and negative if it is to the left.</param>
     public void Animation(float h)
     {
         anim.SetBool("IsWalking", (h != 0) && (isGrounded));
         anim.SetBool("IsJumping", !isGrounded);
     }
 
+    /// <summary>
+    /// Function called to make the player jump.
+    /// </summary>
     public void Jump()
     {
         RaycastHit2D hit;

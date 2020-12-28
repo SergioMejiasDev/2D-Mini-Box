@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 
 public class GameManagerMenu : MonoBehaviour
 {
+    #region Variables
     [Header("Panels")]
     [SerializeField] GameObject[] panels = null;
 
@@ -14,11 +15,10 @@ public class GameManagerMenu : MonoBehaviour
     [SerializeField] AudioMixer audioMixer = null;
     [SerializeField] Slider soundSlider = null;
     float soundVolume;
-    
+    #endregion
+
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         LoadOptions();
     }
 
@@ -26,19 +26,30 @@ public class GameManagerMenu : MonoBehaviour
     {
         soundVolume = soundSlider.value;
 
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(soundVolume) * 20);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(soundVolume) * 25);
     }
 
+    /// <summary>
+    /// Function called to load a new game (scene).
+    /// </summary>
+    /// <param name="buildIndex">Number of the scene to be loaded.</param>
     public void LoadGame(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
     }
 
+    /// <summary>
+    /// Function called to load a random game.
+    /// </summary>
     public void LoadRandomGame()
     {
         SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings));
     }
 
+    /// <summary>
+    /// Function used to navigate between the main menu panels.
+    /// </summary>
+    /// <param name="panel">The panel to open.</param>
     public void OpenPanel(GameObject panel)
     {
         for (int i = 0; i < panels.Length; i++)
@@ -49,6 +60,9 @@ public class GameManagerMenu : MonoBehaviour
         panel.SetActive(true);
     }
 
+    /// <summary>
+    /// Close the game completely.
+    /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -58,6 +72,9 @@ public class GameManagerMenu : MonoBehaviour
 #endif
     }
 
+    /// <summary>
+    /// Function that loads the options from the PlayerPrefs.
+    /// </summary>
     void LoadOptions()
     {
         if (PlayerPrefs.HasKey("GameVolume"))
@@ -67,12 +84,18 @@ public class GameManagerMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that saves the options in the PlayerPrefs.
+    /// </summary>
     public void SaveOptions()
     {
         PlayerPrefs.SetFloat("GameVolume", soundVolume);
         PlayerPrefs.Save();
     }
 
+    /// <summary>
+    /// Function to delete all saved high scores.
+    /// </summary>
     public void ClearHighScores()
     {
         PlayerPrefs.SetInt("HighScore1", 0);

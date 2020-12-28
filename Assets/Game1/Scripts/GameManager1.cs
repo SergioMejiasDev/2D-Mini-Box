@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// Script to control the main functions of the game 1.
 /// </summary>
 public class GameManager1 : MonoBehaviour
 {
+    #region Variables
     public static GameManager1 manager;
     
     [Header("Score")]
@@ -23,12 +23,8 @@ public class GameManager1 : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject panelMenu = null;
     [SerializeField] GameObject panelGameOver = null;
-    [SerializeField] GameObject gameOverFirstSelected = null;
     [SerializeField] GameObject panelPause = null;
-    [SerializeField] GameObject pauseFirstSelected = null;
     [SerializeField] GameObject panelHelp = null;
-    [SerializeField] GameObject helpFirstSelected = null;
-    [SerializeField] EventSystem eventSystem = null;
 
     [Header("Players")]
     [SerializeField] GameObject player1 = null;
@@ -37,7 +33,8 @@ public class GameManager1 : MonoBehaviour
 
     [Header("Spawns")]
     [SerializeField] GameObject[] generators = null;
-    
+    #endregion
+
     void Awake()
     {
         manager = this;
@@ -146,7 +143,6 @@ public class GameManager1 : MonoBehaviour
     public void GameOver()
     {
         panelGameOver.SetActive(true);
-        eventSystem.SetSelectedGameObject(gameOverFirstSelected);
         for (int i = 0; i < generators.Length; i++)
         {
             generators[i].SetActive(false);
@@ -162,7 +158,6 @@ public class GameManager1 : MonoBehaviour
         if (panelPause.activeSelf == false)
         {
             panelPause.SetActive(true);
-            eventSystem.SetSelectedGameObject(pauseFirstSelected);
             Time.timeScale = 0;
         }
         else if (panelPause.activeSelf == true)
@@ -226,7 +221,6 @@ public class GameManager1 : MonoBehaviour
         if (panelHelp.activeSelf == false)
         {
             panelHelp.SetActive(true);
-            eventSystem.SetSelectedGameObject(helpFirstSelected);
         }
         else
         {

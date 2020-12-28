@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// Script to control the main functions of the game 3.
@@ -47,12 +46,8 @@ public class GameManager3 : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject panelMenu = null;
     [SerializeField] GameObject panelHelp = null;
-    [SerializeField] GameObject helpFirstSelected = null;
     [SerializeField] GameObject panelPause = null;
-    [SerializeField] GameObject pauseFirstSelected = null;
     [SerializeField] GameObject panelGameOver = null;
-    [SerializeField] GameObject gameOverFirstSelected = null;
-    [SerializeField] EventSystem eventSystem = null;
     #endregion
 
     void Awake()
@@ -63,6 +58,7 @@ public class GameManager3 : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        AudioListener.volume = 1;
         enemyController = enemyHolder.GetComponent<EnemyController>();
         playerController = player.GetComponent<PlayerController>();
         score = 0;
@@ -215,13 +211,14 @@ public class GameManager3 : MonoBehaviour
         if (panelPause.activeSelf == false)
         {
             panelPause.SetActive(true);
-            eventSystem.SetSelectedGameObject(pauseFirstSelected);
             Time.timeScale = 0;
+            AudioListener.volume = 0;
         }
         else if (panelPause.activeSelf == true)
         {
             panelPause.SetActive(false);
             Time.timeScale = 1;
+            AudioListener.volume = 1;
         }
     }
 
@@ -233,8 +230,8 @@ public class GameManager3 : MonoBehaviour
         if (panelHelp.activeSelf == false)
         {
             panelHelp.SetActive(true);
-            eventSystem.SetSelectedGameObject(helpFirstSelected);
         }
+        
         else
         {
             panelHelp.SetActive(false);
@@ -292,7 +289,6 @@ public class GameManager3 : MonoBehaviour
             }
             
             panelGameOver.SetActive(true);
-            eventSystem.SetSelectedGameObject(gameOverFirstSelected);
             SaveHighScore();
             LoadHighScore();
             StopAllCoroutines();
