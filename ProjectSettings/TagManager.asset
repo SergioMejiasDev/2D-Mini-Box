@@ -22,6 +22,10 @@ TagManager:
   - Game1/Ground
   - Game1/Pipe
   - Game1/Missile
+  - Game4/Dot
+  - Game4/Maze
+  - Game4/BigDot
+  - Game4/Fruit
   layers:
   - Default
   - TransparentFX

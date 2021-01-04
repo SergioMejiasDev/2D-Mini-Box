@@ -119,6 +119,7 @@ public class GameManager3 : MonoBehaviour
         enemiesInScreen = 55;
         
         enemyController.StartPlay(true);
+        StopAllCoroutines();
         StartCoroutine(WaitForUFO());
     }
 
