@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -117,11 +115,8 @@ public class GameManager2 : MonoBehaviour
     /// </summary>
     public void LoadHighScore()
     {
-        if (PlayerPrefs.HasKey("HighScore2-1"))
-        {
-            highScore1 = PlayerPrefs.GetInt("HighScore2-1");
-            highScore2 = PlayerPrefs.GetInt("HighScore2-2");
-        }
+        highScore1 = PlayerPrefs.GetInt("HighScore2-1", 0);
+        highScore2 = PlayerPrefs.GetInt("HighScore2-2", 0);
 
         highScoreText.text = "HIGH SCORE: " + highScore1.ToString() + " - " + highScore2.ToString();
     }
@@ -131,7 +126,7 @@ public class GameManager2 : MonoBehaviour
     /// </summary>
     public void SaveHighScore()
     {
-        if (paddleAI.enabled == true)
+        if (paddleAI.enabled)
         {
             if ((player1Score - player2Score) > (highScore1 - highScore2))
             {
@@ -147,12 +142,12 @@ public class GameManager2 : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
-        if (panelPause.activeSelf == false)
+        if (!panelPause.activeSelf)
         {
             panelPause.SetActive(true);
             Time.timeScale = 0;
         }
-        else if (panelPause.activeSelf == true)
+        else if (panelPause.activeSelf)
         {
             panelPause.SetActive(false);
             Time.timeScale = 1;
@@ -164,7 +159,7 @@ public class GameManager2 : MonoBehaviour
     /// </summary>
     public void Help()
     {
-        if (panelHelp.activeSelf == false)
+        if (!panelHelp.activeSelf)
         {
             panelHelp.SetActive(true);
         }

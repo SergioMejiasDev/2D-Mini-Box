@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -128,10 +127,7 @@ public class GameManager3 : MonoBehaviour
     /// </summary>
     void LoadHighScore()
     {
-        if (PlayerPrefs.HasKey("HighScore3"))
-        {
-            highScore = PlayerPrefs.GetInt("HighScore3");
-        }
+        highScore = PlayerPrefs.GetInt("HighScore3", 0);
     }
 
     /// <summary>
@@ -209,13 +205,13 @@ public class GameManager3 : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
-        if (panelPause.activeSelf == false)
+        if (!panelPause.activeSelf)
         {
             panelPause.SetActive(true);
             Time.timeScale = 0;
             AudioListener.volume = 0;
         }
-        else if (panelPause.activeSelf == true)
+        else if (panelPause.activeSelf)
         {
             panelPause.SetActive(false);
             Time.timeScale = 1;
@@ -228,7 +224,7 @@ public class GameManager3 : MonoBehaviour
     /// </summary>
     public void Help()
     {
-        if (panelHelp.activeSelf == false)
+        if (!panelHelp.activeSelf)
         {
             panelHelp.SetActive(true);
         }

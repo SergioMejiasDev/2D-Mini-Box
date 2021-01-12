@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
 /// <summary>
 /// Class that manages the main menu functions.
@@ -20,22 +17,16 @@ public class GameManagerMenu : MonoBehaviour
     [SerializeField] GameObject arrowLeft = null;
     [SerializeField] GameObject arrowRight = null;
 
-    [Header("Options")]
-    [SerializeField] AudioMixer audioMixer = null;
-    [SerializeField] Slider soundSlider = null;
-    float soundVolume;
+    [Header("Volume")]
+    int volume;
+    [SerializeField] Text volumeText = null;
+    [SerializeField] GameObject volumeLeftArrow = null;
+    [SerializeField] GameObject volumeRightArrow = null;
     #endregion
 
     private void Start()
     {
-        LoadOptions();
-    }
-
-    private void Update()
-    {
-        soundVolume = soundSlider.value;
-
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(soundVolume) * 25);
+        CheckVolume();
     }
 
     /// <summary>
@@ -70,50 +61,51 @@ public class GameManagerMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Function that changes to the previous game.
+    /// Function that changes the active game.
     /// </summary>
-    public void ArrowLeft()
+    public void ArrowGames(bool leftArrow)
     {
-        activeGame -= 1;
-
-        arrowRight.SetActive(true);
-
-        if (activeGame <= 0)
+        if (leftArrow)
         {
-            activeGame = 0;
-            arrowLeft.SetActive(false);
+            activeGame -= 1;
+
+            arrowRight.SetActive(true);
+
+            if (activeGame <= 0)
+            {
+                activeGame = 0;
+                arrowLeft.SetActive(false);
+            }
+
+            for (int i = 0; i < games.Length; i++)
+            {
+                games[i].SetActive(false);
+            }
+
+            games[activeGame].SetActive(true);
         }
 
-        for (int i = 0; i < games.Length; i++)
+        else
         {
-            games[i].SetActive(false);
-        }
+            activeGame += 1;
 
-        games[activeGame].SetActive(true);
+            arrowLeft.SetActive(true);
+
+            if (activeGame >= (games.Length - 1))
+            {
+                activeGame = games.Length - 1;
+                arrowRight.SetActive(false);
+            }
+
+            for (int i = 0; i < games.Length; i++)
+            {
+                games[i].SetActive(false);
+            }
+
+            games[activeGame].SetActive(true);
+        }
     }
 
-    /// <summary>
-    /// Function that changes to the next game.
-    /// </summary>
-    public void ArrowRight()
-    {
-        activeGame += 1;
-
-        arrowLeft.SetActive(true);
-
-        if (activeGame >= (games.Length - 1))
-        {
-            activeGame = games.Length - 1;
-            arrowRight.SetActive(false);
-        }
-
-        for (int i = 0; i < games.Length; i++)
-        {
-            games[i].SetActive(false);
-        }
-
-        games[activeGame].SetActive(true);
-    }
 
     /// <summary>
     /// Close the game completely.
@@ -128,15 +120,77 @@ public class GameManagerMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Function called to check the volume at the start of the game.
+    /// </summary>
+    void CheckVolume()
+    {
+        LoadOptions();
+
+        AudioListener.volume = (volume / 100f);
+
+        if (volume > 0)
+        {
+            volumeText.text = volume.ToString() + "%";
+
+            if (volume >= 100)
+            {
+                volumeRightArrow.SetActive(false);
+            }
+        }
+
+        else
+        {
+            volumeLeftArrow.SetActive(false);
+            volumeText.text = "OFF";
+        }
+    }
+
+    /// <summary>
+    /// Function called to modify the volume of the game.
+    /// </summary>
+    /// <param name="leftArrow">True if we are lowering the volume.</param>
+    public void VolumeManager(bool leftArrow)
+    {
+        if (leftArrow)
+        {
+            volume -= 5;
+            AudioListener.volume = (volume / 100f);
+            volumeRightArrow.SetActive(true);
+
+            if (volume > 0)
+            {
+                volumeText.text = volume.ToString() + "%";
+            }
+
+            else
+            {
+                volumeLeftArrow.SetActive(false);
+                volumeText.text = "OFF";
+            }
+        }
+
+        else
+        {
+            volume += 5;
+            AudioListener.volume = (volume / 100f);
+            volumeLeftArrow.SetActive(true);
+            volumeText.text = volume.ToString() + "%";
+
+
+            if (volume >= 100)
+            {
+                volumeRightArrow.SetActive(false);
+            }
+        }
+    }
+
+    /// <summary>
     /// Function that loads the options from the PlayerPrefs.
     /// </summary>
     void LoadOptions()
     {
-        if (PlayerPrefs.HasKey("GameVolume"))
-        {
-            float soundVolumeLoaded = PlayerPrefs.GetFloat("GameVolume");
-            soundSlider.value = soundVolumeLoaded;
-        }
+        int soundVolumeLoaded = PlayerPrefs.GetInt("GameVolume", 100);
+        volume = soundVolumeLoaded;
     }
 
     /// <summary>
@@ -144,7 +198,7 @@ public class GameManagerMenu : MonoBehaviour
     /// </summary>
     public void SaveOptions()
     {
-        PlayerPrefs.SetFloat("GameVolume", soundVolume);
+        PlayerPrefs.SetInt("GameVolume", volume);
         PlayerPrefs.Save();
     }
 
