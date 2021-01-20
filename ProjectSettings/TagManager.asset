@@ -26,6 +26,10 @@ TagManager:
   - Game4/Maze
   - Game4/BigDot
   - Game4/Fruit
+  - Game5/Food
+  - Game5/Tail
+  - Game5/Border
+  - Game5/RedFood
   layers:
   - Default
   - TransparentFX
