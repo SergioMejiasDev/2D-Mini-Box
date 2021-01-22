@@ -70,7 +70,7 @@ public class SnakeMovement : MonoBehaviour
     {
         if (!isPlayer2)
         {
-            if (canMove)
+            if ((canMove) && (Time.timeScale == 1))
             {
                 if ((Input.GetKeyDown(KeyCode.D)) && direction != -Vector2.right)
                 {

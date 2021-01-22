@@ -30,6 +30,8 @@ TagManager:
   - Game5/Tail
   - Game5/Border
   - Game5/RedFood
+  - Game6/Spawner
+  - Game6/Tetromino
   layers:
   - Default
   - TransparentFX
