@@ -27,7 +27,6 @@ public class GameManager5 : MonoBehaviour
     [SerializeField] Text scoreText = null;
     int score2 = 0;
     [SerializeField] Text score2Text = null;
-    [SerializeField] Text victoryText = null;
     int highScore = 0;
     [SerializeField] Text highScoreText = null;
 
@@ -41,8 +40,10 @@ public class GameManager5 : MonoBehaviour
     [SerializeField] GameObject panelMenu = null;
     [SerializeField] GameObject panelPause = null;
     [SerializeField] GameObject panelGameOver = null;
-    [SerializeField] GameObject panelVictory = null;
     [SerializeField] GameObject panelHelp = null;
+    [SerializeField] GameObject panelVictory = null;
+    [SerializeField] Text victoryText1 = null;
+    [SerializeField] Text victoryText2 = null;
 
     private void Awake()
     {
@@ -151,7 +152,7 @@ public class GameManager5 : MonoBehaviour
         else
         {
             score2 += scoreValue;
-            score2Text.text = "SCORE: " + score.ToString();
+            score2Text.text = "SCORE: " + score2.ToString();
         }
     }
 
@@ -180,14 +181,14 @@ public class GameManager5 : MonoBehaviour
 
         if (!player1victory)
         {
-            victoryText.text = "PLAYER 2 WINS";
-            victoryText.color = head2.GetComponent<SpriteRenderer>().color;
+            victoryText2.enabled = true;
+            victoryText1.enabled = false;
         }
 
         else
         {
-            victoryText.text = "PLAYER 1 WINS";
-            victoryText.color = head.GetComponent<SpriteRenderer>().color;
+            victoryText1.enabled = true;
+            victoryText2.enabled = false;
         }
 
         StopAllCoroutines();

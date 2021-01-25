@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager4 : MonoBehaviour
 {
+    #region Variables
     public static GameManager4 manager4;
     public delegate void Manager4Delegate();
     public static event Manager4Delegate ResetPositions;
@@ -48,6 +49,7 @@ public class GameManager4 : MonoBehaviour
     [SerializeField] GameObject panelPause = null;
     [SerializeField] GameObject panelGameOver = null;
     [SerializeField] GameObject panelHelp = null;
+    #endregion
 
     private void Awake()
     {
