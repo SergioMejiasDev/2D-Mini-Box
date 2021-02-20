@@ -27,6 +27,11 @@ public class GameManagerMenu : MonoBehaviour
     private void Start()
     {
         CheckVolume();
+
+        if (PlayerPrefs.GetInt("FirstTime") == 0)
+        {
+            OpenPanel(panels[5]);
+        }
     }
 
     /// <summary>
@@ -105,7 +110,6 @@ public class GameManagerMenu : MonoBehaviour
             games[activeGame].SetActive(true);
         }
     }
-
 
     /// <summary>
     /// Close the game completely.
@@ -200,6 +204,15 @@ public class GameManagerMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("GameVolume", volume);
         PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// Function that allows changing the language from the options menu.
+    /// </summary>
+    /// <param name="newLanguage">The code of the language that we want to activate.</param>
+    public void ChangeLanguage(string newLanguage)
+    {
+        MultilanguageManager.multilanguageManager.ChangeLanguage(newLanguage);
     }
 
     /// <summary>

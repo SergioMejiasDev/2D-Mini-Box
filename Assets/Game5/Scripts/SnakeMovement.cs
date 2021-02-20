@@ -141,15 +141,7 @@ public class SnakeMovement : MonoBehaviour
             foodSound.Play();
             hasEaten = true;
 
-            if (!isPlayer2)
-            {
-                GameManager5.manager5.UpdateScore(10, false);
-            }
-
-            else
-            {
-                GameManager5.manager5.UpdateScore(10, true);
-            }
+            GameManager5.manager5.UpdateScore(10, isPlayer2);
 
             GameManager5.manager5.Spawn();
 

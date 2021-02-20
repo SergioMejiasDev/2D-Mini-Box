@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// Script to control the main functions of the game 1.
+/// Class to control the main functions of the game 1.
 /// </summary>
 public class GameManager1 : MonoBehaviour
 {
@@ -244,12 +244,12 @@ public class GameManager1 : MonoBehaviour
         {
             if (isPlayer1)
             {
-                player1.transform.position = new Vector2(-8.76f, -5.4f);
+                player1.transform.position = new Vector2(-6.3f, -5.4f);
                 player1.SetActive(true);
             }
             else
             {
-                player2.transform.position = new Vector2(7.5f, -5.4f);
+                player2.transform.position = new Vector2(6.3f, -5.4f);
                 player2.SetActive(true);
             }
         }

@@ -32,6 +32,7 @@ TagManager:
   - Game5/RedFood
   - Game6/Spawner
   - Game6/Tetromino
+  - Menu/LanguageManager
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
-/// Script that takes care of the player's movement.
+/// Class that takes care of the player's movement.
 /// </summary>
 public class Player : MonoBehaviour
 {
@@ -29,11 +27,11 @@ public class Player : MonoBehaviour
     {
         if (isPlayer1)
         {
-            transform.position = new Vector2(-8.76f, -5.4f);
+            transform.position = new Vector2(-6.3f, -5.4f);
         }
         else
         {
-            transform.position = new Vector2(7.5f, -5.4f);
+            transform.position = new Vector2(6.3f, -5.4f);
         }
     }
 

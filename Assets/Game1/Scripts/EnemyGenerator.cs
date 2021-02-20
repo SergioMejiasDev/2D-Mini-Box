@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Script used by the enemies generator.
+/// Class used by the enemies generator.
 /// </summary>
 public class EnemyGenerator : MonoBehaviour
 {

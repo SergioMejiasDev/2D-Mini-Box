@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Script to control the main functions of the game 2.
+/// Class to control the main functions of the game 2.
 /// </summary>
 public class GameManager2 : MonoBehaviour
 {

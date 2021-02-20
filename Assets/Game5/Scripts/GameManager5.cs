@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager5 : MonoBehaviour
 {
+    #region Variables
     public static GameManager5 manager5;
 
     [Header("Players")]
@@ -44,6 +45,7 @@ public class GameManager5 : MonoBehaviour
     [SerializeField] GameObject panelVictory = null;
     [SerializeField] Text victoryText1 = null;
     [SerializeField] Text victoryText2 = null;
+    #endregion
 
     private void Awake()
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 243122308854002363}
   - component: {fileID: 243122308854002362}
   - component: {fileID: 243122308854002361}
-  - component: {fileID: 3682184094971824273}
+  - component: {fileID: 221277064654869350}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5045122b10b18884cb70319f9d318425, type: 3}
-    m_FontSize: 60
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CLOSE GAME
+  m_Text: Close
 --- !u!114 &243122308854002361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3682184094971824273
+--- !u!114 &221277064654869350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,30 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 243122308854002359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c84a9b856224a042a809d7e6fe60b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:1a53bf16fe04ada419e383f9e389cd95
-    m_TableEntryReference:
-      m_KeyId: 34654268608512
-      m_Key: 
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 243122308854002362}
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  multilanguageText: {fileID: 11400000, guid: 3261b5f8b152f424b9a1edf7486e6c73, type: 2}
 --- !u!1 &243122309106085862
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +159,7 @@ GameObject:
   - component: {fileID: 243122309106085866}
   - component: {fileID: 243122309106085865}
   - component: {fileID: 243122309106085864}
-  - component: {fileID: 3072014493901579919}
+  - component: {fileID: 3151277718905668215}
   m_Layer: 5
   m_Name: Help
   m_TagString: Untagged
@@ -235,7 +215,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5045122b10b18884cb70319f9d318425, type: 3}
-    m_FontSize: 60
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -246,7 +226,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HELP
+  m_Text: Help
 --- !u!114 &243122309106085864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +281,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3072014493901579919
+--- !u!114 &3151277718905668215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,30 +290,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 243122309106085862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c84a9b856224a042a809d7e6fe60b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:1a53bf16fe04ada419e383f9e389cd95
-    m_TableEntryReference:
-      m_KeyId: 32441517395968
-      m_Key: 
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 243122309106085865}
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  multilanguageText: {fileID: 11400000, guid: 32c14fb4a24951e4684db06d7bbae03e, type: 2}
 --- !u!1 &243122309589739211
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +306,7 @@ GameObject:
   - component: {fileID: 243122309589739214}
   - component: {fileID: 243122309589739213}
   - component: {fileID: 243122309589739215}
-  - component: {fileID: 3485179184592167701}
+  - component: {fileID: 7959220583373629618}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -402,7 +362,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5045122b10b18884cb70319f9d318425, type: 3}
-    m_FontSize: 60
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -413,7 +373,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: Play
 --- !u!114 &243122309589739215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +428,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3485179184592167701
+--- !u!114 &7959220583373629618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,30 +437,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 243122309589739211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c84a9b856224a042a809d7e6fe60b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:1a53bf16fe04ada419e383f9e389cd95
-    m_TableEntryReference:
-      m_KeyId: 32352346492928
-      m_Key: 
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 243122309589739213}
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  multilanguageText: {fileID: 11400000, guid: 4bb85d0b3eba5fe4a8f8f9f4b50fb283, type: 2}
 --- !u!1 &1572335224961266396
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,10 +473,10 @@ RectTransform:
   m_Father: {fileID: 4095970276937422331}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.35300002, y: 0.8912135}
-  m_AnchorMax: {x: 0.6465718, y: 0.99021345}
-  m_AnchoredPosition: {x: -0.15457153, y: 0.14324951}
-  m_SizeDelta: {x: -102.95105, y: -33.164307}
+  m_AnchorMin: {x: 0.29633462, y: 0.88636774}
+  m_AnchorMax: {x: 0.70400006, y: 0.957}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -85, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3564765348031640403
 CanvasRenderer:
@@ -567,7 +507,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5045122b10b18884cb70319f9d318425, type: 3}
-    m_FontSize: 25
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -611,10 +551,10 @@ RectTransform:
   m_Father: {fileID: 4095970276937422331}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1992846, y: 0.6427866}
-  m_AnchorMax: {x: 0.80085117, y: 0.9143202}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
-  m_SizeDelta: {x: -230.34296, y: -95.35846}
+  m_AnchorMin: {x: 0.16712548, y: 0.68180895}
+  m_AnchorMax: {x: 0.83916736, y: 0.8552207}
+  m_AnchoredPosition: {x: -3.5, y: 3}
+  m_SizeDelta: {x: -155, y: -47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4095970275999389611
 CanvasRenderer:
@@ -645,9 +585,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5045122b10b18884cb70319f9d318425, type: 3}
-    m_FontSize: 120
+    m_FontSize: 80
     m_FontStyle: 1
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 120
     m_Alignment: 4
@@ -696,8 +636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.13012695, y: -0.09573364}
-  m_SizeDelta: {x: 382.84692, y: 351.0771}
+  m_AnchoredPosition: {x: -2.5999756, y: -0.2000122}
+  m_SizeDelta: {x: 243.65051, y: 303.9817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4095970276937422277
 CanvasRenderer:

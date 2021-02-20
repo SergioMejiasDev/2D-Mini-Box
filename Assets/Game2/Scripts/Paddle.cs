@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
-/// Script that controls the movement of the paddles.
+/// Class that controls the movement of the paddles.
 /// </summary>
 public class Paddle : MonoBehaviour
 {
     [SerializeField] bool isPlayer1 = false;
-    float speed = 5;
+    float speed = 3.5f;
     Rigidbody2D rb;
     AudioSource audioSource;
     float movement;
