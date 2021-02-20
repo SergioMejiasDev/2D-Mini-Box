@@ -17,6 +17,6 @@ MonoBehaviour:
     Goal Is To Obtain The Greatest Number Of Coins Without Being Touched By The\r
     Enemies."
   spanish: "Utiliza las teclas \"A\" y \"D\" para controlar al jugador 1 y \"W\"\r
-    para saltar.\r\n\nUtilice las flechas izquierda y derecha para controlar\r al
-    jugador 2 y la flecha hacia arriba para saltar.\r\n\nTu objetivo es obtener\r
+    para saltar.\r\n\nUtilice las flechas \"Izquierda\" y \"Derecha\" para controlar\r
+    al jugador 2 y la flecha \"Arriba\" para saltar.\r\n\nTu objetivo es obtener\r
     la mayor cantidad de monedas sin ser alcanzado por los enemigos."

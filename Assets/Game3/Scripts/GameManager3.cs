@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// Script to control the main functions of the game 3.
+/// Class to control the main functions of the game 3.
 /// </summary>
 public class GameManager3 : MonoBehaviour
 {
