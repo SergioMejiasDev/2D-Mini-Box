@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioSource coinSound = null;
+    [SerializeField] AudioSource hurtSound = null;
     #endregion
 
     private void OnEnable()
@@ -136,11 +137,14 @@ public class Player : MonoBehaviour
             {
                 GameManager1.manager.Respawn(isPlayer1);
             }
+
             else
             {
                 gameObject.SetActive(false);
                 GameManager1.manager.GameOver();
             }
+
+            hurtSound.Play();
         }
     }
 
