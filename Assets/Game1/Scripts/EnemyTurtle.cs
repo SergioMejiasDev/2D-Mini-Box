@@ -6,12 +6,7 @@
 public class EnemyTurtle : MonoBehaviour
 {
     int direction = 1;
-    SpriteRenderer sr;
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
+    [SerializeField] SpriteRenderer sr;
 
     private void OnEnable()
     {
@@ -54,7 +49,8 @@ public class EnemyTurtle : MonoBehaviour
             direction *= -1;
             FlipEnemy();
         }
-        if (other.gameObject.CompareTag("Game1/Pipe"))
+
+        else if (other.gameObject.CompareTag("Game1/Pipe"))
         {
             gameObject.SetActive(false);
         }

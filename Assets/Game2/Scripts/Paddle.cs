@@ -7,15 +7,13 @@ public class Paddle : MonoBehaviour
 {
     [SerializeField] bool isPlayer1 = false;
     float speed = 3.5f;
-    Rigidbody2D rb;
-    AudioSource audioSource;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] AudioSource audioSource;
     float movement;
     Vector2 startPosition;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
         startPosition = transform.position;
     }
 

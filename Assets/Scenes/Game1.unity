@@ -629,7 +629,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.9454821, y: 0}
+  m_Offset: {x: -1.2605428, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -640,7 +640,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16362274, y: 2.0625}
+  m_Size: {x: 0.79374474, y: 2.0625}
   m_EdgeRadius: 0
 --- !u!61 &188719527
 BoxCollider2D:
@@ -2614,7 +2614,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.975168, y: -0.010745287}
+  m_Offset: {x: -1.2856126, y: -0.010745287}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2625,7 +2625,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.081793785, y: 2.0410094}
+  m_Size: {x: 0.70268357, y: 2.0410094}
   m_EdgeRadius: 0
 --- !u!61 &1206896251
 BoxCollider2D:
@@ -3308,6 +3308,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer1: 0
+  rb: {fileID: 1718098348}
+  anim: {fileID: 1718098347}
+  sr: {fileID: 1718098350}
+  audioSource: {fileID: 1718098344}
   coinSound: {fileID: 789094696}
   hurtSound: {fileID: 363432454}
 --- !u!212 &1718098350
@@ -4012,6 +4016,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer1: 1
+  rb: {fileID: 2120173762}
+  anim: {fileID: 2120173764}
+  sr: {fileID: 2120173759}
+  audioSource: {fileID: 2120173766}
   coinSound: {fileID: 789094696}
   hurtSound: {fileID: 363432454}
 --- !u!50 &2120173762

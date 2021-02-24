@@ -11,10 +11,10 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] Transform[] waypoints = null;
     int currentWaypoint = 0;
     public float speed = 0.1f;
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     
     [Header("Animation")]
-    Animator anim;
+    [SerializeField] Animator anim;
     bool blueMode = false;
 
     [Header("Death")]
@@ -39,8 +39,6 @@ public class GhostMovement : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()

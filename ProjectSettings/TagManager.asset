@@ -33,6 +33,13 @@ TagManager:
   - Game6/Spawner
   - Game6/Tetromino
   - Menu/LanguageManager
+  - Game7/JumpArea
+  - Game7/Barrel
+  - Game7/Mallet
+  - Game7/Flame
+  - Game7/Ladders
+  - Game7/MalletHit
+  - Game7/Walls
   layers:
   - Default
   - TransparentFX
@@ -44,9 +51,9 @@ TagManager:
   - 
   - Enemy
   - PostProcessing
-  - 
-  - 
-  - 
+  - Mask1
+  - Mask2
+  - Mask3
   - 
   - 
   - 
