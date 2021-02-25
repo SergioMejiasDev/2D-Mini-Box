@@ -21,10 +21,10 @@ MonoBehaviour:
 
 
     By taking the mallets you can destroy barrels or enemies and
-    get points. You also get points by jumping over barrels or catching up with the
-    princess.'
+    get points. You also get points by jumping over the barrels or catching up with
+    the princess.'
   spanish: "Utiliza las teclas \"A\" y \"D\" para moverte, y \"W\" para saltar. Pulsando
     \"W\" o \"S\" junto a las escaleras, puedes subir o bajar.\r\n\r\nEvita ser golpeado
     por las llamas o los barriles.\r\n\r\nCogiendo los mazos puedes destruir barriles
     o enemigos y obtener puntos. Tambi\xE9n consigues puntos saltando por encima
-    los barriles o alcanzando a la princesa."
+    de los barriles o alcanzando a la princesa."
