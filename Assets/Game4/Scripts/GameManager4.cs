@@ -49,6 +49,7 @@ public class GameManager4 : MonoBehaviour
     [SerializeField] GameObject panelPause = null;
     [SerializeField] GameObject panelGameOver = null;
     [SerializeField] GameObject panelHelp = null;
+    [SerializeField] GameObject panelBlack = null;
     #endregion
 
     private void Awake()
@@ -300,7 +301,13 @@ public class GameManager4 : MonoBehaviour
     /// <returns></returns>
     IEnumerator ResetPosition()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+
+        panelBlack.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        panelBlack.SetActive(false);
 
         if (ResetPositions != null)
         {
@@ -322,6 +329,12 @@ public class GameManager4 : MonoBehaviour
         PlayerWin();
 
         yield return new WaitForSeconds(2);
+
+        panelBlack.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        panelBlack.SetActive(false);
 
         dotsInScreen = 325;
 
