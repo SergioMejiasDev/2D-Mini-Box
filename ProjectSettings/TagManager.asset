@@ -19,7 +19,6 @@ TagManager:
   - Game1/Enemy
   - Game1/Coin
   - Game1/Walls
-  - Game1/Ground
   - Game1/Pipe
   - Game1/Missile
   - Game4/Dot

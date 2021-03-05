@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     float speed = 4;
     float jump = 9.5f;
-    bool isGrounded;
+    [SerializeField] LayerMask groundMask = 0;
     
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
@@ -23,6 +23,17 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource coinSound = null;
     [SerializeField] AudioSource hurtSound = null;
     #endregion
+
+    /// <summary>
+    /// Boolean that indicates through a Raycast if the player is touching the ground.
+    /// </summary>
+    /// <returns>True if the player is on the ground, false if not.</returns>
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, sr.bounds.extents.y + 0.01f, 0), Vector2.down, 0.1f, groundMask);
+
+        return hit;
+    }
 
     private void OnEnable()
     {
@@ -80,8 +91,8 @@ public class Player : MonoBehaviour
     /// <param name="h">Direction of movement of the player, positive if it is to the right and negative if it is to the left.</param>
     public void Animation(float h)
     {
-        anim.SetBool("IsWalking", (h != 0) && (isGrounded));
-        anim.SetBool("IsJumping", !isGrounded);
+        anim.SetBool("IsWalking", h != 0 && IsGrounded());
+        anim.SetBool("IsJumping", !IsGrounded());
     }
 
     /// <summary>
@@ -89,23 +100,9 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Jump()
     {
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(transform.position - new Vector3(0, sr.bounds.extents.y + 0.01f, 0), Vector2.down, 0.1f);
-        
-        {
-            if (hit)
-            {
-                isGrounded = true;
-            }
-            else
-            {
-                isGrounded = false;
-            }
-        }
-
         if (isPlayer1)
         {
-            if (Input.GetKeyDown(KeyCode.W) && (isGrounded))
+            if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
             {
                 rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
                 audioSource.Play();
@@ -113,7 +110,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && (isGrounded))
+            if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
             {
                 rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
                 audioSource.Play();

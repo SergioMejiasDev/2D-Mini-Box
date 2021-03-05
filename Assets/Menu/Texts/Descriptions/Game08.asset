@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   english: 'Use the "WASD" keys to move the frog.
 
-    
 
-    Try to reach the five
-    bases at the top of the map avoiding the obstacles along the way. To cross the
-    lake you can jump on the trunks or the turtles.'
+    Try to reach the five bases
+    at the top of the map avoiding the obstacles along the way. To cross the lake
+    you can jump on the trunks or the turtles.'
   spanish: "Utiliza las teclas \"WASD\" para mover a la rana.\r\n\r\nIntenta alcanzar
     las cinco bases en el extremo superior del mapa evitando los obst\xE1culos por
     el camino. Para atravesar el lago puedes saltar sobre los troncos o las tortugas."
