@@ -13,8 +13,7 @@ public class GameManager6 : MonoBehaviour
     public static int height = 20;
     public static Transform[,] grid = new Transform[width, height];
 
-    [SerializeField] GameObject spawnerObject = null;
-    TetrominoSpawner spawner = null;
+    [SerializeField] TetrominoSpawner spawner = null;
 
     [Header("Score")]
     int score = 0;
@@ -82,7 +81,6 @@ public class GameManager6 : MonoBehaviour
     {
         Time.timeScale = 1;
         LoadHighScore();
-        spawner = spawnerObject.GetComponent<TetrominoSpawner>();
     }
 
     /// <summary>
@@ -96,7 +94,7 @@ public class GameManager6 : MonoBehaviour
         score = 0;
         scoreText.text = "SCORE: " + score.ToString();
 
-        spawnerObject.SetActive(true);
+        spawner.enabled = true;
         spawner.Spawn();
     }
 
@@ -178,7 +176,7 @@ public class GameManager6 : MonoBehaviour
     public void GameOver()
     {
         gameOverSound.Play();
-        spawnerObject.SetActive(false);
+        spawner.enabled = false;
         panelGameOver.SetActive(true);
 
         GameObject[] activeTetrominos = GameObject.FindGameObjectsWithTag("Game6/Tetromino");
