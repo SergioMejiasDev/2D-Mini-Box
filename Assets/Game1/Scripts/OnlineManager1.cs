@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
+/// <summary>
+/// Class that manages the online functions of Game 01.
+/// </summary>
 public class OnlineManager1 : MonoBehaviourPunCallbacks
 {
     public static OnlineManager1 onlineManager;
@@ -36,6 +39,9 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         onlineManager = this;
     }
 
+    /// <summary>
+    /// Function that starts the game online.
+    /// </summary>
     public void StartGame()
     {
         photonView.RPC("EnableGenerators", RpcTarget.MasterClient);
@@ -60,6 +66,9 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         StartCoroutine(WaitForRespawn());
     }
 
+    /// <summary>
+    /// Function that instantiates the player in the starting position.
+    /// </summary>
     void InstantiatePlayer()
     {
         if (player != null)
@@ -81,6 +90,9 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that activates the generators (enemies and coins) on the server.
+    /// </summary>
     [PunRPC] void EnableGenerators()
     {
         for (int i = 0; i < generators.Length; i++)
@@ -89,6 +101,10 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that plays the sounds on the server.
+    /// </summary>
+    /// <param name="soundToPlay">The sound we want to play.</param>
     [PunRPC] void PlaySound(string soundToPlay)
     {
         switch (soundToPlay)
@@ -102,16 +118,19 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
-    public void Scored(bool isPlayer1)
-    {
-        photonView.RPC("UpdateScore", RpcTarget.All, isPlayer1);
-    }
-
+    /// <summary>
+    /// Function we call to destroy a coin.
+    /// </summary>
+    /// <param name="coin">The Photon View ID of the coin that we are going to destroy.</param>
     public void DestroyCoin(int coin)
     {
         photonView.RPC("DestroyCoinServer", RpcTarget.MasterClient, coin);
     }
 
+    /// <summary>
+    /// Function that destroy a coin on the server.
+    /// </summary>
+    /// <param name="coin">The Photon View ID of the coin that we are going to destroy.</param>
     [PunRPC] void DestroyCoinServer(int coin)
     {
         if (PhotonView.Find(coin) != null)
@@ -120,6 +139,19 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that increases the score.
+    /// </summary>
+    /// <param name="isPlayer1">True if player 1 scores.</param>
+    public void Scored(bool isPlayer1)
+    {
+        photonView.RPC("UpdateScore", RpcTarget.All, isPlayer1);
+    }
+
+    /// <summary>
+    /// Function that increases the score on the server.
+    /// </summary>
+    /// <param name="isPlayer1">True if player 1 scores.</param>
     [PunRPC] void UpdateScore(bool isPlayer1)
     {
         photonView.RPC("PlaySound", RpcTarget.All, "coin");
@@ -137,6 +169,10 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that resets a player's score to zero on the server.
+    /// </summary>
+    /// <param name="isPlayer1">True if is for player 1.</param>
     [PunRPC] void CleanScore(bool isPlayer1)
     {
         if (isPlayer1)
@@ -168,6 +204,10 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Coroutine that makes a wait before instantiating the player again.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitForRespawn()
     {
         yield return new WaitForSeconds(2);
@@ -176,6 +216,9 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that is called when we enter a room.
+    /// </summary>
     public override void OnJoinedRoom()
     {
         players = PhotonNetwork.PlayerList;
@@ -187,6 +230,10 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         StartGame();
     }
 
+    /// <summary>
+    /// Function called when a player leaves the room.
+    /// </summary>
+    /// <param name="otherPlayer">The player who left the room.</param>
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         if (otherPlayer.NickName == "1")
@@ -202,6 +249,10 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that is called when we disconnect from the server.
+    /// </summary>
+    /// <param name="cause"></param>
     public override void OnDisconnected(DisconnectCause cause)
     {
         GameManager1.manager.LoadGame(1);

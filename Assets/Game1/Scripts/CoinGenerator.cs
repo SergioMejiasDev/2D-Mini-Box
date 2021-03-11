@@ -50,6 +50,9 @@ public class CoinGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that is responsible for instantiate coins on the server.
+    /// </summary>
     void InstantiateCoin()
     {
         PhotonNetwork.InstantiateRoomObject("1Coin", SpawnPosition(), Quaternion.identity);

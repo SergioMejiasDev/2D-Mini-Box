@@ -99,10 +99,12 @@ public class GameManager1 : MonoBehaviour
     public void GameOver()
     {
         panelGameOver.SetActive(true);
+
         for (int i = 0; i < generators.Length; i++)
         {
             generators[i].SetActive(false);
         }
+        
         SaveHighScore();
     }
 
@@ -127,7 +129,6 @@ public class GameManager1 : MonoBehaviour
     /// <summary>
     /// Function that updates the score.
     /// </summary>
-    /// <param name="isPlayer1">True if the scored player is player 1.</param>
     public void UpdateScore()
     {
         score += 1;

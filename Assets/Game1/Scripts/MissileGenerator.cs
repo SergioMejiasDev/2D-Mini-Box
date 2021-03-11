@@ -12,6 +12,10 @@ public class MissileGenerator : MonoBehaviour
         StartCoroutine (SpawnMissiles(NetworkManager.networkManager.isConnected));
     }
 
+    /// <summary>
+    /// Function that generates a random position for the missiles.
+    /// </summary>
+    /// <returns>Vector 2 of the random position.</returns>
     Vector2 SpawnPosition()
     {
         int randonNumber = Random.Range(1, 4);
@@ -45,14 +49,18 @@ public class MissileGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that is responsible for instantiating missiles on the server.
+    /// </summary>
     void InstantiateMissiles()
     {
         PhotonNetwork.InstantiateRoomObject("1Missile", SpawnPosition(), Quaternion.identity);
     }
 
     /// <summary>
-    /// Corroutine that calls the function to generate missiles after a few seconds.
+    /// Coroutine that calls the function to generate missiles after a few seconds.
     /// </summary>
+    /// <param name="multiplayer">True if multiplayer is active.</param>
     /// <returns></returns>
     IEnumerator SpawnMissiles(bool multiplayer)
     {
@@ -73,5 +81,4 @@ public class MissileGenerator : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(4, 7));
         }
     }
-
 }

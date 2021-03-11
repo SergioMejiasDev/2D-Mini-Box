@@ -27,14 +27,18 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that is responsible for instantiating enemies on the server.
+    /// </summary>
     void InstantiateEnemy()
     {
         PhotonNetwork.InstantiateRoomObject("1Turtle", transform.position, Quaternion.identity);
     }
 
     /// <summary>
-    /// Corroutine that calls the function to generate enemies after a few seconds.
+    /// Coroutine that calls the function to generate enemies after a few seconds.
     /// </summary>
+    /// <param name="multiplayer">True if multiplayer is active.</param>
     /// <returns></returns>
     IEnumerator Spawner(bool multiplayer)
     {

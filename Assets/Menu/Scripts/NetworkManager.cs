@@ -2,6 +2,9 @@
 using Photon.Pun;
 using Photon.Realtime;
 
+/// <summary>
+/// Class that manages the connections with the Photon Server.
+/// </summary>
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject panelConnecting = null;
@@ -19,6 +22,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         networkManager = this;
     }
 
+    /// <summary>
+    /// Function we call to connect to the server.
+    /// </summary>
     public void ConnectToServer()
     {
         PhotonNetwork.GameVersion = "2021.0311";
@@ -27,6 +33,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         panelConnecting.SetActive(true);
     }
 
+    /// <summary>
+    /// Function called when the connection to the server is successful.
+    /// </summary>
     public override void OnConnectedToMaster()
     {
         isConnected = true;
@@ -35,26 +44,37 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         panelRooms.SetActive(true);
     }
 
+    /// <summary>
+    /// Function called to disconnect from the server.
+    /// </summary>
     public void DisconnectFromServer()
     {
-        activeRoom = 0;
-        isConnected = false;
-
         PhotonNetwork.Disconnect();
     }
 
+    /// <summary>
+    /// Function called when you have disconnected from the server.
+    /// </summary>
+    /// <param name="cause"></param>
     public override void OnDisconnected(DisconnectCause cause)
     {
         activeRoom = 0;
         isConnected = false;
     }
 
+    /// <summary>
+    /// Function called to enter a room.
+    /// </summary>
+    /// <param name="roomNumber">The number of the room we want to enter.</param>
     public void JoinRoom(int roomNumber)
     {
         activeRoom = roomNumber;
         PhotonNetwork.JoinOrCreateRoom(roomNumber.ToString(), new RoomOptions {MaxPlayers = 2}, TypedLobby.Default);
     }
 
+    /// <summary>
+    /// Function that is called when we have successfully joined a room.
+    /// </summary>
     public override void OnJoinedRoom()
     {
         panelRooms.SetActive(false);
