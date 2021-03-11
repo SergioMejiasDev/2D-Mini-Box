@@ -55,6 +55,8 @@ TagManager:
   - Game8/Turtle4
   - Game8/Crocodile
   - Game8/DeathZone
+  - Bullet
+  - Menu/NetworkManager
   layers:
   - Default
   - TransparentFX

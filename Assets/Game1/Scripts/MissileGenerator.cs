@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 /// <summary>
 /// Class used by the missiles generator.
@@ -8,7 +9,25 @@ public class MissileGenerator : MonoBehaviour
 {
     void OnEnable()
     {
-        StartCoroutine (SpawnMissiles());
+        StartCoroutine (SpawnMissiles(NetworkManager.networkManager.isConnected));
+    }
+
+    Vector2 SpawnPosition()
+    {
+        int randonNumber = Random.Range(1, 4);
+
+        switch (randonNumber)
+        {
+            case 1:
+                return new Vector2(11f, 2.23f);
+            case 2:
+                return new Vector2(11f, -3.5f);
+            case 3:
+                return new Vector2(-11f, 2.23f);
+            default:
+                return new Vector2(-11f, -3.5f);
+        }
+
     }
 
     /// <summary>
@@ -16,44 +35,41 @@ public class MissileGenerator : MonoBehaviour
     /// </summary>
     void GenerateMissiles()
     {
-        int randonNumber = Random.Range(1, 4);
-
         GameObject missile = ObjectPooler.SharedInstance.GetPooledObject("Game1/Missile");
+        
         if (missile != null)
         {
-            if (randonNumber == 1)
-            {
-                missile.transform.position = new Vector2(11f, 2.23f);
-            }
-            else if (randonNumber == 2)
-            {
-                missile.transform.position = new Vector2(11f, -3.5f);
-            }
-            else if (randonNumber == 3)
-            {
-                missile.transform.position = new Vector2(-11f, 2.23f);
-            }
-            else if (randonNumber == 4)
-            {
-                missile.transform.position = new Vector2(-11f, -3.5f);
-            }
-
+            missile.transform.position = SpawnPosition();
             missile.transform.rotation = Quaternion.identity;
             missile.SetActive(true);
         }
+    }
+
+    void InstantiateMissiles()
+    {
+        PhotonNetwork.InstantiateRoomObject("1Missile", SpawnPosition(), Quaternion.identity);
     }
 
     /// <summary>
     /// Corroutine that calls the function to generate missiles after a few seconds.
     /// </summary>
     /// <returns></returns>
-    IEnumerator SpawnMissiles()
+    IEnumerator SpawnMissiles(bool multiplayer)
     {
         yield return new WaitForSeconds(3);
 
         while (true)
         {
-            GenerateMissiles();
+            if (multiplayer)
+            {
+                InstantiateMissiles();
+            }
+
+            else
+            {
+                GenerateMissiles();
+            }
+
             yield return new WaitForSeconds(Random.Range(4, 7));
         }
     }

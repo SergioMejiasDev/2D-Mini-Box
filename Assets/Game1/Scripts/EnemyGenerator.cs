@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 /// <summary>
 /// Class used by the enemies generator.
@@ -8,15 +9,16 @@ public class EnemyGenerator : MonoBehaviour
 {
     void OnEnable()
     {
-        StartCoroutine(Spawner());
+        StartCoroutine(Spawner(NetworkManager.networkManager.isConnected));
     }
 
     /// <summary>
     /// Function that is responsible for generating enemies.
     /// </summary>
-    public void GenerateEnemy()
+    void GenerateEnemy()
     {
         GameObject goomba = ObjectPooler.SharedInstance.GetPooledObject("Game1/Enemy");
+        
         if (goomba != null)
         {
             goomba.transform.position = transform.position;
@@ -25,15 +27,29 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
+    void InstantiateEnemy()
+    {
+        PhotonNetwork.InstantiateRoomObject("1Turtle", transform.position, Quaternion.identity);
+    }
+
     /// <summary>
     /// Corroutine that calls the function to generate enemies after a few seconds.
     /// </summary>
     /// <returns></returns>
-    IEnumerator Spawner()
+    IEnumerator Spawner(bool multiplayer)
     {
         while (true)
         {
-            GenerateEnemy();
+            if (multiplayer)
+            {
+                InstantiateEnemy();
+            }
+
+            else
+            {
+                GenerateEnemy();
+            }
+
             yield return new WaitForSeconds(Random.Range(3, 6));
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ using UnityEngine.UI;
 public class GameManagerMenu : MonoBehaviour
 {
     #region Variables
+    public static GameManagerMenu managerMenu;
+
     [Header("Panels")]
     [SerializeField] GameObject[] panels = null;
 
@@ -23,6 +26,11 @@ public class GameManagerMenu : MonoBehaviour
     [SerializeField] GameObject volumeLeftArrow = null;
     [SerializeField] GameObject volumeRightArrow = null;
     #endregion
+
+    private void Awake()
+    {
+        managerMenu = this;
+    }
 
     private void Start()
     {

@@ -6,7 +6,6 @@
 public class Player : MonoBehaviour
 {
     #region Variables
-    [SerializeField] bool isPlayer1 = false;
 
     [Header("Movement")]
     float speed = 4;
@@ -14,13 +13,12 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask groundMask = 0;
     
     [Header("Components")]
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] Animator anim;
-    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] Animator anim = null;
+    [SerializeField] SpriteRenderer sr = null;
     [SerializeField] AudioSource audioSource;
 
     [Header("Sounds")]
-    [SerializeField] AudioSource coinSound = null;
     [SerializeField] AudioSource hurtSound = null;
     #endregion
 
@@ -37,34 +35,23 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        if (isPlayer1)
-        {
-            transform.position = new Vector2(-6.3f, -5.4f);
-        }
-        else
-        {
-            transform.position = new Vector2(6.3f, -5.4f);
-        }
+        transform.position = new Vector2(-6.3f, -5.4f);
     }
 
     void Update()
     {
-        float h;
-
-        if (isPlayer1)
-        {
-            h = Input.GetAxisRaw("Player1Horizontal");
-        }
-        else
-        {
-            h = Input.GetAxisRaw("Player2Horizontal");
-        }
+        float h = Input.GetAxisRaw("Player1Horizontal");
 
         Movement(h);
 
         Animation(h);
 
         Jump();
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            GameManager1.manager.PauseGame();
+        }
     }
 
     /// <summary>
@@ -100,21 +87,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Jump()
     {
-        if (isPlayer1)
+        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
         {
-            if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
-            {
-                rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
-            {
-                rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
-                audioSource.Play();
-            }
+            rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            audioSource.Play();
         }
     }
 
@@ -122,16 +98,8 @@ public class Player : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("Game1/Enemy")) || (other.gameObject.CompareTag("Game1/Missile")))
         {
-            if (GameManager1.manager.isMultiplayer)
-            {
-                GameManager1.manager.Respawn(isPlayer1);
-            }
-
-            else
-            {
-                gameObject.SetActive(false);
-                GameManager1.manager.GameOver();
-            }
+            gameObject.SetActive(false);
+            GameManager1.manager.GameOver();
 
             hurtSound.Play();
         }
@@ -141,9 +109,8 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Game1/Coin"))
         {
-            coinSound.Play();
             other.gameObject.SetActive(false);
-            GameManager1.manager.UpdateScore(isPlayer1);
+            GameManager1.manager.UpdateScore();
         }
     }
 }
