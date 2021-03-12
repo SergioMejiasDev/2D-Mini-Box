@@ -17,11 +17,11 @@ GameObject:
   - component: {fileID: 8153917305507794196}
   - component: {fileID: 3332045437478870525}
   - component: {fileID: -2737328019919127289}
-  - component: {fileID: 4251874492468868281}
   - component: {fileID: 6364133763000434695}
   - component: {fileID: 3421791378969755517}
+  - component: {fileID: 2276939280686281781}
   m_Layer: 0
-  m_Name: 1Player1Server
+  m_Name: 1Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,8 +280,8 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: -2737328019919127289}
-  - {fileID: 4251874492468868281}
   - {fileID: 6364133763000434695}
+  - {fileID: 2276939280686281781}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -301,22 +301,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 1
   m_UseLocal: 1
---- !u!114 &4251874492468868281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8153917305507794284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &6364133763000434695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,4 +346,19 @@ MonoBehaviour:
   sr: {fileID: 8153917305507794285}
   jumpSound: {fileID: 8153917305507794196}
   pv: {fileID: 3332045437478870525}
-  col: {fileID: 8153917305507794199}
+--- !u!114 &2276939280686281781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153917305507794284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3

@@ -17,11 +17,11 @@ GameObject:
   - component: {fileID: 7784218560719523893}
   - component: {fileID: -1418042885630157745}
   - component: {fileID: -3573656245244979857}
-  - component: {fileID: -937366888910132785}
   - component: {fileID: -5437997095926229339}
   - component: {fileID: -7703133669730503424}
+  - component: {fileID: -3318942695029475369}
   m_Layer: 0
-  m_Name: 1Player2Server
+  m_Name: 1Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,8 +280,8 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: -3573656245244979857}
-  - {fileID: -937366888910132785}
   - {fileID: -5437997095926229339}
+  - {fileID: -3318942695029475369}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -301,22 +301,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 1
   m_UseLocal: 1
---- !u!114 &-937366888910132785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7784218560719523898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &-5437997095926229339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,4 +346,19 @@ MonoBehaviour:
   sr: {fileID: 7784218560719523891}
   jumpSound: {fileID: 7784218560719523893}
   pv: {fileID: -1418042885630157745}
-  col: {fileID: 7784218560719523895}
+--- !u!114 &-3318942695029475369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784218560719523898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3

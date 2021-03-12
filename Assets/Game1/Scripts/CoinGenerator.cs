@@ -32,7 +32,10 @@ public class CoinGenerator : MonoBehaviour
 
     void OnEnable()
     {
-        StartCoroutine(SpawnCoins(NetworkManager.networkManager.isConnected));
+        if (NetworkManager.networkManager.playerNumber != 2)
+        {
+            StartCoroutine(SpawnCoins(NetworkManager.networkManager.isConnected));
+        }
     }
 
     /// <summary>
@@ -65,6 +68,8 @@ public class CoinGenerator : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnCoins(bool multiplayer)
     {
+        yield return new WaitForSeconds(1);
+
         while (true)
         {
             if (multiplayer)
@@ -73,6 +78,7 @@ public class CoinGenerator : MonoBehaviour
 
                 yield return new WaitForSeconds(Random.Range(3, 6));
             }
+
             else
             {
                 GenerateCoin();

@@ -15,6 +15,7 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
     [SerializeField] GameObject panelMenu = null;
     [SerializeField] GameObject panelPause = null;
     [SerializeField] GameObject panelLostPlayer1 = null;
+    [SerializeField] GameObject waitingMessage = null;
 
     [Header("Generators")]
     [SerializeField] GameObject[] generators = null;
@@ -27,8 +28,6 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
 
     [Header("Player")]
     GameObject player;
-    Photon.Realtime.Player[] players;
-    public int playerNumber = 0;
 
     [Header("Sounds")]
     [SerializeField] AudioSource hurtSound = null;
@@ -44,8 +43,6 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
     /// </summary>
     public void StartGame()
     {
-        photonView.RPC("EnableGenerators", RpcTarget.MasterClient);
-
         photonView.RPC("CleanScore", RpcTarget.All, true);
         photonView.RPC("CleanScore", RpcTarget.All, false);
 
@@ -76,15 +73,15 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
             return;
         }
 
-        switch (playerNumber)
+        switch (NetworkManager.networkManager.playerNumber)
         {
             case 1:
-                player = PhotonNetwork.Instantiate("1Player1Server", new Vector2(-6.3f, -5.4f), Quaternion.identity);
+                player = PhotonNetwork.Instantiate("1Player1", new Vector2(-6.3f, -5.4f), Quaternion.identity);
                 photonView.RPC("CleanScore", RpcTarget.All, true);
                 break;
 
             case 2:
-                player = PhotonNetwork.Instantiate("1Player2Server", new Vector2(6.3f, -5.4f), Quaternion.identity);
+                player = PhotonNetwork.Instantiate("1Player2", new Vector2(6.3f, -5.4f), Quaternion.identity);
                 photonView.RPC("CleanScore", RpcTarget.All, false);
                 break;
         }
@@ -98,6 +95,50 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
         for (int i = 0; i < generators.Length; i++)
         {
             generators[i].SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Function that deactivates the generators on the server.
+    /// </summary>
+    void DisableGenerators()
+    {
+        for (int i = 0; i < generators.Length; i++)
+        {
+            generators[i].SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Function that removes all objects on the screen.
+    /// </summary>
+    void CleanScene()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Game1/Enemy");
+        if (enemies != null)
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].SetActive(false);
+            }
+        }
+
+        GameObject[] coins = GameObject.FindGameObjectsWithTag("Game1/Coin");
+        if (coins != null)
+        {
+            for (int i = 0; i < coins.Length; i++)
+            {
+                DestroyCoin(coins[i].GetComponent<PhotonView>().ViewID, 0);
+            }
+        }
+
+        GameObject[] missiles = GameObject.FindGameObjectsWithTag("Game1/Missile");
+        if (missiles != null)
+        {
+            for (int i = 0; i < missiles.Length; i++)
+            {
+                missiles[i].SetActive(false);
+            }
         }
     }
 
@@ -122,30 +163,35 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
     /// Function we call to destroy a coin.
     /// </summary>
     /// <param name="coin">The Photon View ID of the coin that we are going to destroy.</param>
-    public void DestroyCoin(int coin)
+    /// <param name="playerNumber">Player who has collected the coin. 0 if null.</param>
+    public void DestroyCoin(int coin, int playerNumber)
     {
-        photonView.RPC("DestroyCoinServer", RpcTarget.MasterClient, coin);
+        photonView.RPC("DestroyCoinServer", RpcTarget.MasterClient, coin, playerNumber);
     }
 
     /// <summary>
-    /// Function that destroy a coin on the server.
+    /// Function that destroy a coin on the server and increases the score.
     /// </summary>
     /// <param name="coin">The Photon View ID of the coin that we are going to destroy.</param>
-    [PunRPC] void DestroyCoinServer(int coin)
+    /// <param name="playerNumber">Player who has collected the coin. 0 if null.</param>
+    [PunRPC] void DestroyCoinServer(int coin, int playerNumber)
     {
         if (PhotonView.Find(coin) != null)
         {
             PhotonNetwork.Destroy(PhotonView.Find(coin));
-        }
-    }
 
-    /// <summary>
-    /// Function that increases the score.
-    /// </summary>
-    /// <param name="isPlayer1">True if player 1 scores.</param>
-    public void Scored(bool isPlayer1)
-    {
-        photonView.RPC("UpdateScore", RpcTarget.All, isPlayer1);
+            switch (playerNumber)
+            {
+                case 1:
+                    photonView.RPC("UpdateScore", RpcTarget.All, true);
+                    break;
+                case 2:
+                    photonView.RPC("UpdateScore", RpcTarget.All, false);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     /// <summary>
@@ -221,13 +267,30 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
     /// </summary>
     public override void OnJoinedRoom()
     {
-        players = PhotonNetwork.PlayerList;
+        NetworkManager.networkManager.SetValues();
 
-        playerNumber = players.Length;
-
-        PhotonNetwork.NickName = playerNumber.ToString();
+        if (NetworkManager.networkManager.players.Length == 2)
+        {
+            waitingMessage.SetActive(false);
+        }
 
         StartGame();
+    }
+
+    /// <summary>
+    /// Function called when another player joins the room.
+    /// </summary>
+    /// <param name="newPlayer"></param>
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        NetworkManager.networkManager.SetValues();
+
+        if (NetworkManager.networkManager.players.Length == 2)
+        {
+            waitingMessage.SetActive(false);
+
+            photonView.RPC("EnableGenerators", RpcTarget.All);
+        }
     }
 
     /// <summary>
@@ -245,8 +308,14 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
 
         else
         {
-            photonView.RPC("CleanScore", RpcTarget.All, false);
+            NetworkManager.networkManager.SetValues();
+
+            waitingMessage.SetActive(true);
         }
+
+        DisableGenerators();
+
+        CleanScene();
     }
 
     /// <summary>
