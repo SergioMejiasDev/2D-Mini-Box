@@ -995,15 +995,11 @@ PrefabInstance:
     - target: {fileID: 2024054841251260874, guid: b813339358c89ae45bcf947969fdb5e8,
         type: 3}
       propertyPath: m_Text
-      value: 'Use The Keys "W" And "S" To Control The Player 1 Paddle.
+      value: 'Use The Keys "W" And "S" To Control The Paddle.
 
 
-        To
-        Control The Player 2 Paddle, Use The Keys "Up" And "Down".
-
-
-        Add
-        A Point To The Score If The Other Player Fails To Hit The Ball.'
+        Add A Point
+        To The Score If The Other Player Fails To Hit The Ball.'
       objectReference: {fileID: 0}
     - target: {fileID: 2024054841251260877, guid: b813339358c89ae45bcf947969fdb5e8,
         type: 3}
@@ -1893,7 +1889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4b56b5c3769fd4ca3d68dd5efd4983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer1: 1
   rb: {fileID: 1469495130}
   audioSource: {fileID: 1469495135}
 --- !u!82 &1469495135

@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03b7bbf61d22464fb2448bb6c59e5ed, type: 3}
   m_Name: Game02
   m_EditorClassIdentifier: 
-  english: "Use The Keys \"W\" And \"S\" To Control The Player 1 Paddle.\r\n\nTo\r
-    Control The Player 2 Paddle, Use The Keys \"Up\" And \"Down\".\r\n\nAdd A Point\r
+  english: "Use The Keys \"W\" And \"S\" To Control The Paddle.\r\n\nAdd A Point\r
     To The Score If The Other Player Fails To Hit The Ball."
-  spanish: "Utiliza las teclas \"W\" y \"S\" para controlar la paleta del jugador\r
-    1.\r\n\nPara controlar la paleta del jugador 2, usa las flechas \"Arriba\"\r
-    y \"Abajo\".\r\n\nSumas un punto si el otro jugador no consigue golpear la\r
-    pelota."
+  spanish: "Utiliza las teclas \"W\" y \"S\" para controlar la paleta.\n\nSumas un
+    punto si el otro jugador no consigue golpear la\r pelota."

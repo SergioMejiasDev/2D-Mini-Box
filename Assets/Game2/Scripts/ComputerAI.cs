@@ -10,8 +10,8 @@ public class ComputerAI : MonoBehaviour
     int ballPosition;
 
     [Header("Components")]
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] AudioSource audioSource = null;
     [SerializeField] GameObject ball = null;
 
     void Update()

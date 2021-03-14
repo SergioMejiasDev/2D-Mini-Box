@@ -6,7 +6,7 @@
 public class Ball : MonoBehaviour
 {
     float speed = 4;
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb = null;
 
     void Start()
     {
