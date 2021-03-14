@@ -5,35 +5,23 @@
 /// </summary>
 public class Paddle : MonoBehaviour
 {
-    [SerializeField] bool isPlayer1 = false;
+    [Header("Movement")]
     float speed = 3.5f;
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] AudioSource audioSource;
-    float movement;
-    Vector2 startPosition;
-
-    private void Awake()
-    {
-        startPosition = transform.position;
-    }
+    
+    [Header("Components")]
+    [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] AudioSource audioSource = null;
 
     void Update()
     {
-        if (isPlayer1)
-        {
-            movement = Input.GetAxisRaw("Player1Vertical");
+        float v = Input.GetAxisRaw("Player1Vertical");
 
-            if (Input.GetButtonDown("Cancel"))
-            {
-                GameManager2.manager.PauseGame();
-            }
-        }
-        else
+        if (Input.GetButtonDown("Cancel"))
         {
-            movement = Input.GetAxisRaw("Player2Vertical");
+            GameManager2.manager.PauseGame();
         }
 
-        rb.velocity = new Vector2(rb.velocity.x, movement * speed);
+        rb.velocity = new Vector2(rb.velocity.x, v * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,6 +38,6 @@ public class Paddle : MonoBehaviour
     public void ResetPosition()
     {
         rb.velocity = Vector2.zero;
-        transform.position = startPosition;
+        transform.position = new Vector2(-5.75f, 0);
     }
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   english: "Use The Keys \"A\" And \"D\" To Control The Player, And \"W\" To Jump.\r\n\nYour\r
     Goal Is To Obtain The Greatest Number Of Coins Without Being Touched By The\r
     Enemies."
-  spanish: "Utiliza las teclas \"A\" y \"D\" para controlar al jugador 1 y \"W\"\r
+  spanish: "Utiliza las teclas \"A\" y \"D\" para controlar al jugador y \"W\"\r
     para saltar.\r\n\nTu objetivo es obtener\r la mayor cantidad de monedas sin ser
     alcanzado por los enemigos."

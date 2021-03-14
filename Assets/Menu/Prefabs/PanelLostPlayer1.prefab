@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c84a9b856224a042a809d7e6fe60b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multilanguageText: {fileID: 11400000, guid: bf99cc2e25a72484d9ee1defd45bcaff, type: 2}
+  multilanguageText: {fileID: 11400000, guid: 2b6e1cfcddab1fa4086ad5d02a3ab28d, type: 2}
 --- !u!1 &8239027486529310867
 GameObject:
   m_ObjectHideFlags: 0

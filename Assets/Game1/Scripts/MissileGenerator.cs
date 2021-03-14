@@ -79,7 +79,7 @@ public class MissileGenerator : MonoBehaviourPun
         {
             if (multiplayer)
             {
-                photonView.RPC("InstantiateMissiles", RpcTarget.All, SpawnPosition());
+                photonView.RPC("InstantiateMissiles", RpcTarget.AllViaServer, SpawnPosition());
             }
 
             else

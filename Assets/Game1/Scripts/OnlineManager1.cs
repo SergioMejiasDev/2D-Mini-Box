@@ -184,9 +184,11 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
             {
                 case 1:
                     photonView.RPC("UpdateScore", RpcTarget.All, true);
+                    photonView.RPC("PlaySound", RpcTarget.All, "coin");
                     break;
                 case 2:
                     photonView.RPC("UpdateScore", RpcTarget.All, false);
+                    photonView.RPC("PlaySound", RpcTarget.All, "coin");
                     break;
                 default:
                     break;
@@ -200,8 +202,6 @@ public class OnlineManager1 : MonoBehaviourPunCallbacks
     /// <param name="isPlayer1">True if player 1 scores.</param>
     [PunRPC] void UpdateScore(bool isPlayer1)
     {
-        photonView.RPC("PlaySound", RpcTarget.All, "coin");
-
         if (isPlayer1)
         {
             score1 += 1;

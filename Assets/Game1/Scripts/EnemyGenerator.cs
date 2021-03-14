@@ -56,7 +56,7 @@ public class EnemyGenerator : MonoBehaviourPun
         {
             if (multiplayer)
             {
-                photonView.RPC("InstantiateEnemy", RpcTarget.All, transform.position);
+                photonView.RPC("InstantiateEnemy", RpcTarget.AllViaServer, transform.position);
             }
 
             else
