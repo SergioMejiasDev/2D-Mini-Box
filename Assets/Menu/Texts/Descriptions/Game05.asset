@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03b7bbf61d22464fb2448bb6c59e5ed, type: 3}
   m_Name: Game05
   m_EditorClassIdentifier: 
-  english: "Use The \"WASD\" Keys To Control Player 1, And The Arrows To Control\r
-    Player 2.\r\n\nEat All Possible Points And Avoid Crashing On The Stage Or\r Biting
-    Your Tail."
-  spanish: "Utiliza las teclas \"WASD\" para controlar al jugador 1 y las flechas\r
-    para controlar al jugador 2.\r\n\nCome todos los puntos posibles y evita\r chocar
-    con el escenario o morderte la cola."
+  english: "Use The \"WASD\" Keys To Control Player.\n\nEat All Possible Points And
+    Avoid Crashing On The Stage Or\r Biting Your Tail."
+  spanish: "Utiliza las teclas \"WASD\" para controlar al jugador.\n\nCome todos
+    los puntos posibles y evita\r chocar con el escenario o morderte la cola."

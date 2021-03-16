@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] Animator anim = null;
     [SerializeField] SpriteRenderer sr = null;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSource = null;
 
     [Header("Sounds")]
     [SerializeField] AudioSource hurtSound = null;
